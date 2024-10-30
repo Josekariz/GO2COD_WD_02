@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import QuizCard from './components/QuizCard';
 import ScoreBoard from './components/ScoreBoard';
@@ -46,6 +47,13 @@ export default function QuizApp() {
     }, 1000);
   };
 
+  const restartQuiz = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowResults(false);
+    setError(null);
+    fetchQuestions();
+  };
 
   if (isLoading) return <LoadingScreen />;
 
