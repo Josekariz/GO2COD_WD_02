@@ -12,4 +12,26 @@ export default function QuizApp() {
   const [showResults, setShowResults] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  const fetchQuestions = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('https://opentdb.com/api.php?amount=10&category=9');
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        setQuestions(data.results);
+      } else {
+        setError('No questions received from the API');
+      }
+    } catch (error) {
+      setError('Failed to fetch questions. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 }
