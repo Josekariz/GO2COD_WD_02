@@ -77,6 +77,43 @@ export default function QuizApp() {
           ))}
         </div>
 
+        {/* Quiz title with water effect */}
+        <h1 className="text-5xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-b from-blue-500 to-blue-700 drop-shadow-lg">
+          Quizy
+        </h1>
+
+        <div className="max-w-2xl mx-auto relative">
+          {!showResults ? (
+            <>
+              <ScoreBoard
+                score={score}
+                total={questions.length}
+                current={currentQuestion + 1}
+              />
+              <QuizCard
+                question={questions[currentQuestion]}
+                onAnswer={handleAnswer}
+              />
+            </>
+          ) : (
+            <div className="bg-white rounded-xl p-8 shadow-xl text-center">
+              <h2 className="text-3xl font-bold mb-4 text-blue-700">
+                Quiz Complete!
+              </h2>
+              <p className="text-xl mb-6">
+                Your score: {score} out of {questions.length}
+              </p>
+              <button
+                onClick={restartQuiz}
+                className="px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg
+                         hover:from-blue-500 hover:to-blue-700 transform hover:scale-105 transition-all
+                         shadow-lg hover:shadow-xl"
+              >
+                Play Again
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
