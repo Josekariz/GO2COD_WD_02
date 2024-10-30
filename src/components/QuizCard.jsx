@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
 
-export default function QuizCard({ question, onAnswer }) {
+
+export default function QuizCard({ question, onAnswer, onQuit }) {
+
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
@@ -17,7 +20,8 @@ export default function QuizCard({ question, onAnswer }) {
         onAnswer(answer === question.correct_answer);
     };
 
-    return (
+    
+         return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,6 +64,17 @@ export default function QuizCard({ question, onAnswer }) {
                     </motion.button>
                 ))}
             </div>
+                 <div className="mt-6">
+                     <button
+                         onClick={onQuit}
+                         className="w-full px-4 py-2 border border-red-400 text-red-400 rounded-lg hover:bg-red-400 hover:text-white 
+    transition-colors flex items-center justify-center gap-2"
+                     >
+                         <X className="w-4 h-4" />
+                         Quit
+                     </button>
+
+                 </div>
         </motion.div>
     );
 }
