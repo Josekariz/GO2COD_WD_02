@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import QuizCard from './components/QuizCard';
 import ScoreBoard from './components/ScoreBoard';
 import LoadingScreen from './components/LoadingScreen';
-import { Droplet, Play, X } from 'lucide-react';
+import { Droplet, Play} from 'lucide-react';
 
 export default function QuizApp() {
   const [questions, setQuestions] = useState([]);
