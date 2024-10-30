@@ -57,4 +57,27 @@ export default function QuizApp() {
   if (!questions || questions.length === 0) {
     return <LoadingScreen />;
   }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-cyan-50 to-blue-100">
+      <div className="container mx-auto px-4 py-8 relative">
+        {/* Animated water drops background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <Droplet
+              key={i}
+              className="absolute animate-float text-blue-300/20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                fontSize: `${Math.random() * 20 + 10}px`
+              }}
+            />
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
 }
