@@ -34,6 +34,19 @@ export default function QuizApp() {
     }
   };
 
+  const handleAnswer = (answer) => {
+    if (answer) setScore(score + 1);
+
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(curr => curr + 1);
+      } else {
+        setShowResults(true);
+      }
+    }, 1000);
+  };
+
+
   if (isLoading) return <LoadingScreen />;
 
   if (error) {
