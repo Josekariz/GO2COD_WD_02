@@ -35,6 +35,25 @@ export default function QuizApp() {
   };
 
   if (isLoading) return <LoadingScreen />;
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-cyan-50 to-blue-100 flex items-center justify-center">
+        <div className="bg-white rounded-xl p-8 shadow-xl text-center max-w-md mx-4">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Oops!</h2>
+          <p className="text-gray-700 mb-6">{error}</p>
+          <button
+            onClick={restartQuiz}
+            className="px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg
+                     hover:from-blue-500 hover:to-blue-700 transition-all shadow-lg"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!questions || questions.length === 0) {
     return <LoadingScreen />;
   }
