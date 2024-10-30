@@ -34,4 +34,8 @@ export default function QuizApp() {
     }
   };
 
+  if (isLoading) return <LoadingScreen />;
+  if (!questions || questions.length === 0) {
+    return <LoadingScreen />;
+  }
 }
